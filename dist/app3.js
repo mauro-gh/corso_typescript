@@ -16,7 +16,7 @@ class Persona2 {
     }
 }
 let p1 = new Persona2('mario', 'rossi', 33);
-let p2 = new Persona2('marco', 'verdi');
+let p2 = new Persona2('marco', 'verdi', 44);
 // p1.nome = 'altro_nome'  <--- ERR
 p1.presenta();
 p2.saluta(p1);
@@ -24,5 +24,14 @@ p2.presenta();
 // passaggio di una classe come argomento del metodo saluta
 // classi derivate
 class Studente extends Persona2 {
+    constructor(_nome, _cognome, materiaPref) {
+        super(_nome, _cognome);
+        this.materiaPref = materiaPref;
+    }
+    presentastud() {
+        console.log(`Sono lo studente ${this.nome} ${this.cognome} e adoro ${this.materiaPref} !`);
+    }
 }
-let s1;
+let s1 = new Studente('gino', 'studioso', 'storia');
+s1.presenta();
+s1.presentastud();

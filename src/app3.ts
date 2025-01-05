@@ -2,9 +2,8 @@
 // con 2 proprieta, constructor e metodi
 
 class Persona2{
-    private nome: string 
-    private cognome: string 
-
+    protected nome: string 
+    protected cognome: string 
     constructor(
             _nome: string, 
             _cognome: string, 
@@ -22,11 +21,10 @@ class Persona2{
     saluta(_persona: Persona2): void{
         console.log(`Arrivederci ${_persona.nome} ${_persona.cognome}`)
     }
-
 }
 
 let p1: Persona2 = new Persona2('mario','rossi',33)
-let p2: Persona2 = new Persona2('marco','verdi')
+let p2: Persona2 = new Persona2('marco','verdi', 44)
 
 // p1.nome = 'altro_nome'  <--- ERR
 
@@ -38,9 +36,24 @@ p2.presenta()
 
 // classi derivate
 class Studente extends Persona2{
+
+    constructor(
+        _nome: string,
+        _cognome: string,
+        private materiaPref: string
+    ){
+            super(_nome, _cognome)            
+    }
+    
+    presentastud(): void{
+        console.log(`Sono lo studente ${this.nome} ${this.cognome} e adoro ${this.materiaPref} !`)
+    }
 }
 
-let s1: Studente
+let s1: Studente = new Studente('gino','studioso','storia')
+s1.presenta()
+s1.presentastud()
+
 
 
 
